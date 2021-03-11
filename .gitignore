@@ -1,2 +1,5 @@
 .direnv/
 .ipynb_checkpoints/
+terraform.tfvars
+.terraform/
+*.tfstate*
