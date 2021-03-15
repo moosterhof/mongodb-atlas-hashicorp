@@ -21,9 +21,9 @@ variable "aws_region" {
   default     = "ap-southeast-1"
   description = "AWS Region"
 }
-variable "aws_account_id" {
-  description = "My AWS Account ID"
-}
+# variable "aws_account_id" {
+#   description = "My AWS Account ID"
+# }
 variable "atlasorgid" {
   description = "Atlas Org ID"
 }
