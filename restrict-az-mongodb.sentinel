@@ -19,10 +19,10 @@ allMDBAtlasInstances = plan.find_resources("mongodbatlas_cluster")
 
 # Filter to EC2 instances with violations
 # Warnings will be printed for all violations since the last parameter is true
-violatingEC2Instances = plan.filter_attribute_not_in_list(allMDBAtlasInstances,
+violatingMDBAtlasInstances = plan.filter_attribute_not_in_list(allMDBAtlasInstances,
 	"provider_region_name", allowed_zones, true)
 
 # Main rule
 main = rule {
-	length(violatingEC2Instances["messages"]) is 0
+	length(violatingMDBAtlasInstances["messages"]) is 0
 }
