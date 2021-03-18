@@ -3,11 +3,17 @@ resource "aws_vpc" "primary" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
   enable_dns_support   = true
+  tags = {
+    Name = "moosterhof-mongodb-vpc"
+  }
 }
 
 //Create IGW
 resource "aws_internet_gateway" "primary" {
   vpc_id = aws_vpc.primary.id
+  tags = {
+    Name = "moosterhof-mongodb-igw"
+  }
 }
 
 //Route Table
@@ -23,6 +29,9 @@ resource "aws_subnet" "primary-az1" {
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
   availability_zone       = "${var.aws_region}a"
+  tags = {
+    Name = "moosterhof-mongodb-subnet"
+  }
 }
 
 //Subnet-B
@@ -31,6 +40,9 @@ resource "aws_subnet" "primary-az2" {
   cidr_block              = "10.0.2.0/24"
   map_public_ip_on_launch = false
   availability_zone       = "${var.aws_region}b"
+  tags = {
+    Name = "moosterhof-mongodb-subnet"
+  }
 }
 
 /*Security-Group
@@ -55,5 +67,8 @@ resource "aws_security_group" "primary_default" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+  tags = {
+    Name = "moosterhof-mongodb-sg"
   }
 }
