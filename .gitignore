@@ -3,4 +3,5 @@
 .ipynb_checkpoints/
 .terraform.lock.hcl
 .terraform/
+.sentinel/
 terraform.tfvars
