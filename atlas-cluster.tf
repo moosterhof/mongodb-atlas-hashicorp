@@ -17,7 +17,7 @@ resource "mongodbatlas_cluster" "cluster-atlas" {
   provider_region_name        = var.atlas_region
 }
 output "atlasclusterstring" {
-  value = mongodbatlas_cluster.cluster-atlas.connection_strings
+  value = mongodbatlas_cluster.cluster-atlas.connection_strings.standard_srv
 }
 
 # TODO: fix ptfe
