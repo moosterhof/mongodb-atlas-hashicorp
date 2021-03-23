@@ -1,8 +1,9 @@
 locals {
-  owner         = "moosterhof"
-  se-region     = "apj"
-  purpose       = "demo"
-  ttl           = "24"
+  # owner         = split(local.caller_user, ":")[1]
+  owner     = "moosterhof"
+  se-region = "apj"
+  purpose   = "demo"
+  ttl       = "24"
 }
 
 locals {
