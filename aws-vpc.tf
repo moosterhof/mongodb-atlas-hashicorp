@@ -1,4 +1,3 @@
-//Create Primary VPC
 resource "aws_vpc" "primary" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
@@ -11,7 +10,6 @@ resource "aws_vpc" "primary" {
   )
 }
 
-//Create IGW
 resource "aws_internet_gateway" "primary" {
   vpc_id = aws_vpc.primary.id
   tags = merge(
@@ -22,11 +20,20 @@ resource "aws_internet_gateway" "primary" {
   )
 }
 
-//Route Table
-resource "aws_route" "primary-internet_access" {
-  route_table_id         = aws_vpc.primary.main_route_table_id
-  destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = aws_internet_gateway.primary.id
+resource "aws_route_table" "rt" {
+  vpc_id = aws_vpc.primary.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.primary.id
+  }
+
+  tags = merge(
+    local.common_tags,
+    {
+      Name = "moosterhof-rt"
+    },
+  )
 }
 
 //Subnet-A
