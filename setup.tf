@@ -3,7 +3,6 @@ locals {
   se-region     = "apj"
   purpose       = "demo"
   ttl           = "24"
-  tfe-workspace = "mongodb-atlas-hashicorp"
 }
 
 locals {
@@ -14,6 +13,6 @@ locals {
     purpose       = local.purpose
     ttl           = local.ttl
     terraform     = "true"
-    tfe-workspace = local.tfe-workspace
+    tfe-workspace = terraform.workspace
   }
 }
