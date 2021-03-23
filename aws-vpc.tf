@@ -6,11 +6,12 @@ resource "aws_vpc" "primary" {
   tags = {
     Name = "moosterhof-mongodb-vpc"
 
-    owner = "moosterhof"
-    se-region = "apj"
-    purpose = "demo"
-    ttl = "24"
-    terraform = "true"
+    owner         = "moosterhof"
+    se-region     = "apj"
+    purpose       = "demo"
+    ttl           = "24"
+    terraform     = "true"
+    tfe-workspace = "mongodb-atlas-hashicorp"
   }
 }
 
@@ -20,11 +21,12 @@ resource "aws_internet_gateway" "primary" {
   tags = {
     Name = "moosterhof-mongodb-igw"
 
-    owner = "moosterhof"
-    se-region = "apj"
-    purpose = "demo"
-    ttl = "24"
-    terraform = "true"
+    owner         = "moosterhof"
+    se-region     = "apj"
+    purpose       = "demo"
+    ttl           = "24"
+    terraform     = "true"
+    tfe-workspace = "mongodb-atlas-hashicorp"
   }
 }
 
@@ -44,11 +46,12 @@ resource "aws_subnet" "primary-az1" {
   tags = {
     Name = "moosterhof-mongodb-subnet"
 
-    owner = "moosterhof"
-    se-region = "apj"
-    purpose = "demo"
-    ttl = "24"
-    terraform = "true"
+    owner         = "moosterhof"
+    se-region     = "apj"
+    purpose       = "demo"
+    ttl           = "24"
+    terraform     = "true"
+    tfe-workspace = "mongodb-atlas-hashicorp"
   }
 }
 
@@ -61,11 +64,12 @@ resource "aws_subnet" "primary-az2" {
   tags = {
     Name = "moosterhof-mongodb-subnet"
 
-    owner = "moosterhof"
-    se-region = "apj"
-    purpose = "demo"
-    ttl = "24"
-    terraform = "true"
+    owner         = "moosterhof"
+    se-region     = "apj"
+    purpose       = "demo"
+    ttl           = "24"
+    terraform     = "true"
+    tfe-workspace = "mongodb-atlas-hashicorp"
   }
 }
 
@@ -95,10 +99,11 @@ resource "aws_security_group" "primary_default" {
   tags = {
     Name = "moosterhof-mongodb-sg"
 
-    owner = "moosterhof"
-    se-region = "apj"
-    purpose = "demo"
-    ttl = "24"
-    terraform = "true"
+    owner         = "moosterhof"
+    se-region     = "apj"
+    purpose       = "demo"
+    ttl           = "24"
+    terraform     = "true"
+    tfe-workspace = "mongodb-atlas-hashicorp"
   }
 }
