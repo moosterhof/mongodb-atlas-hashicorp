@@ -16,8 +16,30 @@ resource "mongodbatlas_cluster" "cluster-atlas" {
   provider_instance_size_name = "M10"
   provider_region_name        = var.atlas_region
 }
+
 output "atlasclusterstring" {
   value = mongodbatlas_cluster.cluster-atlas.connection_strings[0].standard_srv
+}
+
+# Create the peering connection request
+resource "mongodbatlas_network_peering" "test" {
+  accepter_region_name   = var.aws_region
+  project_id             = var.atlasprojectid
+  container_id           = mongodbatlas_cluster.cluster-atlas.container_id
+  provider_name          = "AWS"
+  route_table_cidr_block = "192.168.0.0/24"
+  vpc_id                 = aws_vpc.primary.id
+  aws_account_id         = data.aws_caller_identity.current.account_id
+}
+
+# the following assumes an AWS provider is configured
+# Accept the peering connection request
+resource "aws_vpc_peering_connection_accepter" "aws_peer" {
+  vpc_peering_connection_id = mongodbatlas_network_peering.test.connection_id
+  auto_accept = true
+  tags = {
+    Side = "Accepter"
+  }
 }
 
 # TODO: fix ptfe
