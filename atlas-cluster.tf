@@ -38,7 +38,14 @@ resource "aws_vpc_peering_connection_accepter" "aws_peer" {
   vpc_peering_connection_id = mongodbatlas_network_peering.test.connection_id
   auto_accept = true
   tags = {
+    Name = "moosterhof-mongodb-link"
     Side = "Accepter"
+
+    owner = "moosterhof"
+    se-region = "apj"
+    purpose = "demo"
+    ttl = "24"
+    terraform = "true"
   }
 }
 

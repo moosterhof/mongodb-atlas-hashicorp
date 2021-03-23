@@ -1,21 +1,8 @@
+# Makefile
 
 .PHONY: all
-all: start
+all: test
 
-.PHONY: start
-start:
-	jupyter notebook  --browser='open %s'
-
-.PHONY: install
-install:
-	pip install -r ./requirements.txt
-
-.PHONY: upgrade
-upgrade:
-	pur
-	pip install --upgrade -r ./requirements.txt
-
-.PHONY: clean
-clean:
-	echo
-
+.PHONY: test
+test:
+	terraform validate

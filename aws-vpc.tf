@@ -5,6 +5,12 @@ resource "aws_vpc" "primary" {
   enable_dns_support   = true
   tags = {
     Name = "moosterhof-mongodb-vpc"
+
+    owner = "moosterhof"
+    se-region = "apj"
+    purpose = "demo"
+    ttl = "24"
+    terraform = "true"
   }
 }
 
@@ -13,6 +19,12 @@ resource "aws_internet_gateway" "primary" {
   vpc_id = aws_vpc.primary.id
   tags = {
     Name = "moosterhof-mongodb-igw"
+
+    owner = "moosterhof"
+    se-region = "apj"
+    purpose = "demo"
+    ttl = "24"
+    terraform = "true"
   }
 }
 
@@ -31,6 +43,12 @@ resource "aws_subnet" "primary-az1" {
   availability_zone       = "${var.aws_region}a"
   tags = {
     Name = "moosterhof-mongodb-subnet"
+
+    owner = "moosterhof"
+    se-region = "apj"
+    purpose = "demo"
+    ttl = "24"
+    terraform = "true"
   }
 }
 
@@ -42,6 +60,12 @@ resource "aws_subnet" "primary-az2" {
   availability_zone       = "${var.aws_region}b"
   tags = {
     Name = "moosterhof-mongodb-subnet"
+
+    owner = "moosterhof"
+    se-region = "apj"
+    purpose = "demo"
+    ttl = "24"
+    terraform = "true"
   }
 }
 
@@ -70,5 +94,11 @@ resource "aws_security_group" "primary_default" {
   }
   tags = {
     Name = "moosterhof-mongodb-sg"
+
+    owner = "moosterhof"
+    se-region = "apj"
+    purpose = "demo"
+    ttl = "24"
+    terraform = "true"
   }
 }
