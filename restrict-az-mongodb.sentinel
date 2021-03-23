@@ -1,5 +1,5 @@
 # This policy uses the Sentinel tfplan/v2 import to restrict
-# the availability zones used by EC2 instances.
+# the availability zones used by MongoDB Atlas instances.
 # This is an easier way to restrict regions than to restrict
 # the region of the AWS provider since that requires the
 # tfconfig/v2 import.
@@ -8,16 +8,16 @@
 # with alias "plan"
 import "tfplan-functions" as plan
 
-# Allowed EC2 Zones
+# Allowed MongoDB Atlas Zones
 # Include "null" to allow missing or computed values
 allowed_zones = [
 	"AP_SOUTHEAST_1",
 ]
 
-# Get all EC2 instances
+# Get all MongoDB Atlas instances
 allMDBAtlasInstances = plan.find_resources("mongodbatlas_cluster")
 
-# Filter to EC2 instances with violations
+# Filter to MongoDB Atlas instances with violations
 # Warnings will be printed for all violations since the last parameter is true
 violatingMDBAtlasInstances = plan.filter_attribute_not_in_list(allMDBAtlasInstances,
 	"provider_region_name", allowed_zones, true)
