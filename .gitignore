@@ -1,4 +1,5 @@
 *.tfstate*
+*.tfvars
 .direnv/
 .ipynb_checkpoints/
 .terraform.lock.hcl
