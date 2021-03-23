@@ -18,6 +18,6 @@ locals {
     purpose       = local.purpose
     ttl           = local.ttl
     terraform     = "true"
-    tfe-workspace = terraform.workspace
+    tfe-workspace = local.tfe-workspace
   }
 }
