@@ -1,9 +1,13 @@
 locals {
+  # get owner name from AWS data field:
   # owner         = split(local.caller_user, ":")[1]
   owner     = "moosterhof"
   se-region = "apj"
   purpose   = "demo"
   ttl       = "24"
+  # this does not work on TFC, its workspace is always "default"
+  # tfe-workspace = terraform.workspace
+  tfe-workspace = "mongodb-atlas-hashicorp"
 }
 
 locals {
