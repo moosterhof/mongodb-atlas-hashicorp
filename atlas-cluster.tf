@@ -13,7 +13,7 @@ resource "mongodbatlas_cluster" "cluster-atlas" {
   provider_disk_iops          = 100
   provider_volume_type        = "STANDARD"
   provider_encrypt_ebs_volume = true
-  provider_instance_size_name = "M10"
+  provider_instance_size_name = "M0"
   provider_region_name        = var.atlas_region
 }
 
