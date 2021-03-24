@@ -54,3 +54,31 @@ resource "aws_vpc_peering_connection_accepter" "aws_peer" {
 #output "plstring" {
 #  value = lookup(mongodbatlas_cluster.cluster-atlas.connection_strings[0].aws_private_link_srv, aws_vpc_endpoint.ptfe_service.id)
 #}
+
+# create user
+resource "mongodbatlas_database_user" "test" {
+  username           = "test-acc-username"
+  password           = "test-acc-password"
+  project_id         = var.atlasprojectid
+  auth_database_name = "admin"
+
+  roles {
+    role_name     = "readWrite"
+    database_name = "dbforApp"
+  }
+
+  roles {
+    role_name     = "readAnyDatabase"
+    database_name = "admin"
+  }
+
+  labels {
+    key   = "My Key"
+    value = "My Value"
+  }
+
+  scopes {
+    name   = mongodbatlas_cluster.cluster-atlas.name
+    type = "CLUSTER"
+  }
+}
