@@ -6,7 +6,7 @@ variable "atlas_region" {
   description = "Atlas Region"
 }
 variable "aws_region" {
-  default     = "us-east-1"
+  default     = "us-east-2"
   description = "AWS Region"
 }
 variable "atlas_vpc_cidr" {
